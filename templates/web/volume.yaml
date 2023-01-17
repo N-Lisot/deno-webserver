@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+    name: {{ .Values.deno.pv.Name }}
+spec:
+    accessModes:
+        - ReadWriteOnce
+    persistentVolumeReclaimPolicy: {{ .Values.deno.pv.PersistentVolumeReclaimPolicy }}
+    storageClassName: standard
+    capacity:
+        storage: {{ .Values.deno.pv.Size }}
+    hostPath:
+        path: {{ .Values.deno.pv.PersistentVolumeReclaimPolicy }}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: {{ .Values.deno.pvc.Name }}
+    namespace: default
+spec:
+    accessModes:
+        - ReadWriteOnce
+    resources:
+        requests:
+            storage: {{ .Values.deno.pvc.Size }}
