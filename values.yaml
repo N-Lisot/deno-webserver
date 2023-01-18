@@ -36,15 +36,15 @@ maria:
   
 deno:
   pv:
-    Name: deno-server
-    Size: 3Gi
-    Path: /data/deno-server/
-    PersistentVolumeReclaimPolicy: Retain
+    - Name: deno-server
+      Size: 3Gi
+      Path: /data/deno-server/
+      PersistentVolumeReclaimPolicy: Retain
 
   pvc:
-    Name: logs
-    Size: 1Gi
-    VolumeName: deno-server
+    - Name: logs
+      Size: 1Gi
+      VolumeName: deno-server
 
   volumeMount:
     name: logs
